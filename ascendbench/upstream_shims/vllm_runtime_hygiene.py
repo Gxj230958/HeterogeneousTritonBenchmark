@@ -233,7 +233,7 @@ def _real_flashinfer_present() -> bool:
 
 def _install_flashinfer_find_spec_lie() -> None:
     """Make availability probes (``importlib.util.find_spec("flashinfer")``)
-    see the TAB stub as ABSENT, so vllm/utils/flashinfer.py's
+    see the HTB stub as ABSENT, so vllm/utils/flashinfer.py's
     ``has_flashinfer()`` returns False even on an nvcc-equipped daemon. Without
     this a spec-bearing stub would make ``has_flashinfer()`` lie True and run
     the module-level ``if has_flashinfer():`` registration block -- an
@@ -246,7 +246,7 @@ def _install_flashinfer_find_spec_lie() -> None:
         base = name.split(".", 1)[0]
         mod = sys.modules.get(base)
         if mod is not None and getattr(mod, _FLASHINFER_STUB_ATTR, False):
-            # The TAB stub is installed for this name -> report it ABSENT so
+            # The HTB stub is installed for this name -> report it ABSENT so
             # has_flashinfer() / has_flashinfer_cubin() probes answer honestly.
             return None
         return current(name, package)

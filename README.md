@@ -29,7 +29,7 @@ English | [中文](README.zh.md)
 
 ## Overview
 
-TritonAscendBench evaluates a candidate `triton-ascend` (NPU) implementation
+Heterogeneous Triton Benchmark evaluates a candidate `triton-ascend` (NPU) implementation
 against the **GPU Triton reference** the kernel was extracted from, on two axes:
 **correctness** (graded now, on CPU) and **performance** (raw NPU latency,
 requires 910B hardware). The 101 tasks are real operators from vLLM / SGLang —
@@ -41,14 +41,14 @@ tolerance / ceiling policy.
 |---|---|---|---|
 | [KernelBench](https://github.com/ScalingIntelligence/KernelBench) | PyTorch module | CUDA | Can a model **generate** a kernel? |
 | [TritonBench](https://github.com/thunlp/TritonBench) | PyTorch op | Triton | Can a model **generate** a Triton kernel? |
-| **TritonAscendBench** | **Production GPU Triton** (vLLM/SGLang) | **NPU triton-ascend (910B)** | Can a real kernel **migrate** without regression? |
+| **Heterogeneous Triton Benchmark** | **Production GPU Triton** (vLLM/SGLang) | **NPU triton-ascend (910B)** | Can a real kernel **migrate** without regression? |
 
 ## Motivation
 
 vLLM and SGLang already serve LLMs on H100 / A100 with mature, hand-tuned Triton
 kernels. Bringing that ecosystem to the Ascend 910B is a **porting** problem, not
 a creative one: the port must reproduce upstream numerical semantics exactly,
-and ideally match its performance envelope. TAB measures precisely that gap, with
+and ideally match its performance envelope. HTB measures precisely that gap, with
 upstream itself as the ground truth.
 
 ## Quick Start
@@ -201,7 +201,7 @@ Start by intent:
 
 ```bibtex
 @misc{tritonascendbench,
-  title  = {TritonAscendBench: A Migration Benchmark for Porting Production
+  title  = {Heterogeneous Triton Benchmark: A Migration Benchmark for Porting Production
             GPU Triton Kernels to Ascend NPU},
   year   = {2026},
   note   = {https://github.com/sii-ai-infra/TritonAscendBench}

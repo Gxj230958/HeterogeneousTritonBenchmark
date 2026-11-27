@@ -1,4 +1,4 @@
-# TAB — current corpus status
+# HTB — current corpus status
 
 This is the top-line status of the task corpus. It matches the
 [README](README.md) §Status; that section is authoritative.

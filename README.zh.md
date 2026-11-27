@@ -1,15 +1,15 @@
-# TritonAscendBench (TAB)
+# Heterogeneous Triton Benchmark (HTB)
 
 > English: [README.md](README.md)
 
-> 一个用于将 GPU Triton kernel 通过 `triton-ascend` 迁移到华为 Ascend 910B 的**迁移基准**（Migration Benchmark）。
+> 一个用于将 GPU Triton kernel 通过 `triton-ascend` 迁移到 Ascend 910B 的**迁移基准**（Migration Benchmark）。
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)
 [![Tasks](https://img.shields.io/badge/Tasks-101-blue)](tasks/)
 
 ## 是什么
 
-TritonAscendBench 评估一个 NPU triton-ascend 实现能否在华为 910B（Atlas A2 系列）上，在**正确性和性能**两个维度上，匹配来自 vLLM/SGLang 推理路径的 **GPU Triton 参考实现**。
+Heterogeneous Triton Benchmark 评估一个 NPU triton-ascend 实现能否在 910B（Atlas A2 系列）上，在**正确性和性能**两个维度上，匹配来自 vLLM/SGLang 推理路径的 **GPU Triton 参考实现**。
 
 与 [KernelBench](https://github.com/ScalingIntelligence/KernelBench)（PyTorch → CUDA 生成）和 [TritonBench](https://github.com/thunlp/TritonBench)（PyTorch → Triton 生成）不同，本项目是一个**迁移基准**：起点是来自 vLLM / SGLang 的*现有生产级 GPU Triton 代码*，目标是 910B 上的 NPU triton-ascend。
 

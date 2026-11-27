@@ -99,7 +99,7 @@ def test_borrow_layernorm_mapping():
 
 
 def test_borrow_layernorm_rejects_multidim_normalize():
-    # normalized_shape=[4096,64] (2-D) does not map to TAB x=[B,D] -> filtered out
+    # normalized_shape=[4096,64] (2-D) does not map to HTB x=[B,D] -> filtered out
     out = ext._borrow_layernorm([[1, 4096, 64]], [{"name": "normalized_shape", "value": [4096, 64]}])
     assert out is None
 

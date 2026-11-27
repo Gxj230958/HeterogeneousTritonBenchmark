@@ -1,13 +1,13 @@
-# TritonAscendBench — Architecture
+# Heterogeneous Triton Benchmark — Architecture
 
 > 中文版：[zh/ARCHITECTURE.md](zh/ARCHITECTURE.md)
 
-How TAB is built and how an evaluation flows: the "how it works" companion to
+How HTB is built and how an evaluation flows: the "how it works" companion to
 the [README](../README.md).
 
-TAB is a **migration benchmark**. Each task takes a real production GPU Triton
+HTB is a **migration benchmark**. Each task takes a real production GPU Triton
 kernel (from vLLM / SGLang / flash-linear-attention) and asks: can it be ported
-to a Huawei Ascend 910B NPU via `triton-ascend` without losing correctness or
+to an Ascend 910B NPU via `triton-ascend` without losing correctness or
 performance? The corpus is **101 tasks** — 36 at L1 (single-op / elementwise /
 reduce / quant), 35 at L2 (fused / matmul / MoE / state-space step), 30 at L3
 (full Flash Attention / fused MoE / chunked pipelines).

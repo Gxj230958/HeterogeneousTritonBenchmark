@@ -13,7 +13,7 @@
 #   - values that cannot be confirmed from public specs are marked `# [unverified]`, to be verified on real 910B hardware,
 #     never fabricating precise numbers to pose as authoritative.
 #
-# Device identity: Huawei Ascend 910B / Atlas A2 training series.
+# Device identity: Ascend 910B / Atlas A2 training series.
 # Note: 910B has multiple SKUs (910B1/B2/B3/B4); peaks vary slightly with SKU and dtype;
 #     the table below uses common public-spec tiers; the specific release must be locked on real hardware in the v0.1 release.
 
@@ -32,8 +32,8 @@ device = "Ascend 910B / Atlas A2"
 
 [compute_class.fp16_cube]
 # Cube (matrix) unit fp16 accumulate peak compute.
-peak_tflops = 256.0   # TFLOP/s; Huawei public spec, consistent with version_matrix [hardware.910b].
-provenance = "huawei-official"
+peak_tflops = 256.0   # TFLOP/s; official public spec, consistent with version_matrix [hardware.910b].
+provenance = "ascend-official"
 description = "Cube unit, fp16 matrix multiply-accumulate"
 
 [compute_class.bf16_cube]
@@ -44,12 +44,12 @@ description = "Cube unit, bf16 matrix multiply-accumulate"
 
 [compute_class.int8]
 # Cube unit int8 quantized peak compute.
-peak_tops = 512.0     # TOP/s; Huawei public spec, consistent with version_matrix [hardware.910b].
-provenance = "huawei-official"
+peak_tops = 512.0     # TOP/s; official public spec, consistent with version_matrix [hardware.910b].
+provenance = "ascend-official"
 description = "Cube unit, int8 quantized multiply-accumulate"
 
 [compute_class.vector]
-# Vector (SIMD/AIV) unit peak compute. Huawei does not list vector separately; uses a third-party academic spec
+# Vector (SIMD/AIV) unit peak compute. The vendor does not list vector separately; uses a third-party academic spec
 # (arXiv 2505.14022 Table1 910B2C 48-AIV Vector@FP16=20T + CSET, consistent with the microarchitecture estimate).
 peak_tflops = 20.0    # TFLOP/s FP16; provenance=academic-spec -> usable for ranking, absolute efficiency %
                       # pending 910B microbench. SKU-dependent: 48 AIV=20T / 40 AIV=16.7T,
@@ -64,8 +64,8 @@ description = "Vector unit, elementwise / reduction FLOPS"
 
 [resource.hbm]
 # On-package HBM (on-package memory) peak bandwidth.
-peak_bandwidth_gbps = 1600.0  # GB/s; Huawei public spec, consistent with version_matrix [hardware.910b].
-provenance = "huawei-official"
+peak_bandwidth_gbps = 1600.0  # GB/s; official public spec, consistent with version_matrix [hardware.910b].
+provenance = "ascend-official"
 description = "On-package HBM memory bandwidth"
 
 [resource.interconnect]

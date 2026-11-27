@@ -48,7 +48,7 @@ _GIGA = 1e9
 # positive peak (t_ref cancels across candidates); academic-spec / estimate /
 # unspecified are ranking-only.
 ABSOLUTE_VERIFIED_PROVENANCES = frozenset(
-    {"nvidia-official", "huawei-official", "on-device-measured"}
+    {"nvidia-official", "ascend-official", "on-device-measured"}
 )
 
 

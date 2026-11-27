@@ -181,7 +181,7 @@ def test_academic_spec_ranks_but_not_absolute(monkeypatch):
     monkeypatch.setattr(
         peak_table, "load_peak_provenance",
         lambda _p=None: ({"vector": "third-party-academic-spec"},
-                         {"hbm": "huawei-official"}))
+                         {"hbm": "ascend-official"}))
     result = _make_result({"P1": [16.0]})
     _eval._apply_roofline(result, _TASK, _SHAPES_DOC)
     assert result.roofline_data_complete is True
@@ -198,7 +198,7 @@ def test_absolute_verified_when_all_peaks_official(monkeypatch):
     monkeypatch.setattr(
         peak_table, "load_peak_provenance",
         lambda _p=None: ({"vector": "on-device-measured"},
-                         {"hbm": "huawei-official"}))
+                         {"hbm": "ascend-official"}))
     result = _make_result({"P1": [16.0]})
     _eval._apply_roofline(result, _TASK, _SHAPES_DOC)
     assert result.absolute_verified is True

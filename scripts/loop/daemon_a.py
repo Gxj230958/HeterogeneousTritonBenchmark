@@ -73,7 +73,7 @@ def _validate_task_id(task_id: str) -> None:
 BENCH_ROOT = Path(__file__).resolve().parents[2]
 # Loop mailbox lives OUTSIDE the bench repo so runtime artifacts cannot
 # pollute git status / get clobbered by repo cleanup. Default location:
-# the bench's parent directory (sibling of TritonAscendBench/), which is
+# the bench's parent directory (one level above the repo checkout), which is
 # the kernel/ root on gpfs and on dev. Overridable via env var for
 # alternate deployments without touching the script.
 LOOP_DIR = Path(os.environ.get("LOOP_MAILBOX_DIR") or (BENCH_ROOT.parent / "loop_mailbox"))

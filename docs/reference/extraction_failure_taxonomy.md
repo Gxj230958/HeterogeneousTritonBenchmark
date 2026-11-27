@@ -13,7 +13,7 @@ Categories of failures when `scripts/internal/extract_upstream_kernel.py` tries 
 | `cpp_stub_dep` | Calls into custom C++ extension (e.g. `torch.ops._C.*`) | No `@triton.jit` upstream → cannot form a valid task; **excluded at extraction** (distinct from `BLOCKED`, which stays in `\|S\|`). The PyTorch oracle is **not** an independent truth source and cannot substitute |
 | `dynamic_shape_branch` | `tl.where` with shape-dependent branches | Create multiple shape configs, document branch coverage |
 | `vendor_specific_op` | Calls `torch_npu.*` / `sgl_kernel_npu.*` | Not a Triton kernel — exclude from benchmark |
-| `private_no_source` | Bytedance / Huawei internal kernel without OSS source | Move to `_appendix/`, mark `is_hidden_only: true` |
+| `private_no_source` | Bytedance or other vendor-internal kernel without OSS source | Move to `_appendix/`, mark `is_hidden_only: true` |
 
 ## Resolution Workflow
 

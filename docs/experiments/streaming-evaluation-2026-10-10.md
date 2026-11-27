@@ -510,7 +510,7 @@ and is not attributed to the harness without a controlled diagnosis.
 ```bash
 source /usr/local/Ascend/ascend-toolkit/set_env.sh
 python scripts/internal/streaming_validation.py inventory \
-  --tasks /path/to/TritonAscendBench/tasks \
+  --tasks /path/to/HeterogeneousTritonBenchmark/tasks \
   --experiments /path/to/tab-experiments --out /path/to/evidence
 TAB_PASS_TIMEOUT_S=1800 python scripts/internal/streaming_validation.py campaign \
   --out /path/to/evidence --device 0
