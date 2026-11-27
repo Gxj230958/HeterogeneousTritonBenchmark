@@ -182,7 +182,7 @@ def build_report(results: list[TaskFeasibility]) -> str:
     sh = Counter(r.shape_class for r in results)
     lines: list[str] = [
         "---",
-        "title: TAB shape/dtype feasibility (Unit 1 -- kernel-source-derived, reproducible)",
+        "title: HTB shape/dtype feasibility (Unit 1 -- kernel-source-derived, reproducible)",
         "date: 2026-06-15",
         "tool: scripts/corpus/shape_feasibility_report.py --regen",
         "---",

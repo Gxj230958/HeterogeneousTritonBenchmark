@@ -1,20 +1,20 @@
-# TritonAscendBench — 设计原理与打分模型
+# Heterogeneous Triton Benchmark — 设计原理与打分模型
 
 > English: [../DESIGN.md](../DESIGN.md)
 
-> TAB 衡量什么，以及为什么这样衡量。面向机器的打分细节参见
+> HTB 衡量什么，以及为什么这样衡量。面向机器的打分细节参见
 > [`docs/reference/scoring_spec.md`](reference/scoring_spec.md)；本文档
 > 是该 spec 所实现的设计原理。
 
-TritonAscendBench（TAB）是一个**迁移基准**。每个 task 给你一个
+Heterogeneous Triton Benchmark（HTB）是一个**迁移基准**。每个 task 给你一个
 取自真实 vLLM、SGLang 或 flash-linear-attention 推理路径的现有生产级 GPU Triton kernel，
-并提出一个问题：*这个 kernel 能否经由 `triton-ascend` 移植到华为 Ascend 910B NPU，
+并提出一个问题：*这个 kernel 能否经由 `triton-ascend` 移植到 Ascend 910B NPU，
 而不损失正确性、也不让性能回退？* 整个语料库共 101 个 task，分布于三个
 难度等级（L1=36，L2=35，L3=30）。
 
 ---
 
-## 1. TAB 是什么 — 迁移命题
+## 1. HTB 是什么 — 迁移命题
 
 大多数 kernel 基准测试考察**生成**：给定一个 PyTorch 参考实现，模型
 能否*从零写出*一个快速 kernel？
@@ -22,7 +22,7 @@ TritonAscendBench（TAB）是一个**迁移基准**。每个 task 给你一个
 - [KernelBench](https://github.com/ScalingIntelligence/KernelBench) — PyTorch → CUDA 生成。
 - [TritonBench](https://github.com/thunlp/TritonBench) — PyTorch → Triton 生成。
 
-TAB 转而考察**迁移**。起点不是一个空白文件 —— 而是
+HTB 转而考察**迁移**。起点不是一个空白文件 —— 而是
 *已经发布并已经正常工作的真实生产级 GPU Triton 代码*。vLLM 和
 SGLang 如今已在 H100/A100 上运行着成熟、经过调优的 Triton kernel；
 其工业级问题是：这些一模一样的 kernel 能否迁移到另一种加速器上

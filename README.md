@@ -1,10 +1,8 @@
-# TritonAscendBench (TAB)
+# Heterogeneous Triton Benchmark (HTB)
 
-A **migration benchmark** that measures whether production GPU Triton kernels —
-extracted from vLLM and SGLang inference paths — can be ported to the Huawei
-Ascend 910B (Atlas A2) via `triton-ascend` **without losing correctness or
-performance**. Where generation benchmarks ask *"can a model write a kernel?"*,
-TAB asks *"can a real kernel survive a hardware migration?"*
+A benchmark suite designed to evaluate the portability of production-grade GPU Triton kernels — extracted from vLLM and SGLang inference pipelines — across heterogeneous AI accelerator architectures. It systematically verifies functional correctness and measures performance parity when migrating kernels to a Triton-compatible NPU compiler runtime.
+
+This benchmark covers 101 core AI operators organized into three difficulty tiers (single operator, fused operator, multi-stage pipeline operator), each paired with reference GPU Triton implementations and PyTorch golden outputs. It supports dozens of input size configurations split into seen and hidden subsets, enabling robust validation of compilation compatibility, numerical consistency, and end-to-end performance across compute platforms.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue)](pyproject.toml)
@@ -31,7 +29,7 @@ English | [中文](README.zh.md)
 
 ## Overview
 
-TritonAscendBench evaluates a candidate `triton-ascend` (NPU) implementation
+Heterogeneous Triton Benchmark evaluates a candidate `triton-ascend` (NPU) implementation
 against the **GPU Triton reference** the kernel was extracted from, on two axes:
 **correctness** (graded now, on CPU) and **performance** (raw NPU latency,
 requires 910B hardware). The 101 tasks are real operators from vLLM / SGLang —
@@ -43,14 +41,14 @@ tolerance / ceiling policy.
 |---|---|---|---|
 | [KernelBench](https://github.com/ScalingIntelligence/KernelBench) | PyTorch module | CUDA | Can a model **generate** a kernel? |
 | [TritonBench](https://github.com/thunlp/TritonBench) | PyTorch op | Triton | Can a model **generate** a Triton kernel? |
-| **TritonAscendBench** | **Production GPU Triton** (vLLM/SGLang) | **NPU triton-ascend (910B)** | Can a real kernel **migrate** without regression? |
+| **Heterogeneous Triton Benchmark** | **Production GPU Triton** (vLLM/SGLang) | **NPU triton-ascend (910B)** | Can a real kernel **migrate** without regression? |
 
 ## Motivation
 
 vLLM and SGLang already serve LLMs on H100 / A100 with mature, hand-tuned Triton
 kernels. Bringing that ecosystem to the Ascend 910B is a **porting** problem, not
 a creative one: the port must reproduce upstream numerical semantics exactly,
-and ideally match its performance envelope. TAB measures precisely that gap, with
+and ideally match its performance envelope. HTB measures precisely that gap, with
 upstream itself as the ground truth.
 
 ## Quick Start
@@ -203,7 +201,7 @@ Start by intent:
 
 ```bibtex
 @misc{tritonascendbench,
-  title  = {TritonAscendBench: A Migration Benchmark for Porting Production
+  title  = {Heterogeneous Triton Benchmark: A Migration Benchmark for Porting Production
             GPU Triton Kernels to Ascend NPU},
   year   = {2026},
   note   = {https://github.com/sii-ai-infra/TritonAscendBench}

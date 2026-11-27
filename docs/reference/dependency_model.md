@@ -1,6 +1,6 @@
 # Dependency Model — Runtime Decoupling from vLLM / SGLang
 
-TritonAscendBench's tasks are Triton operators **extracted from vLLM and SGLang
+Heterogeneous Triton Benchmark's tasks are Triton operators **extracted from vLLM and SGLang
 production inference code**. A natural worry follows: *does running the benchmark
 drag in the whole vLLM / SGLang stack?* It does not. This document explains how
 the runtime is decoupled, what you actually install, and how that decoupling is

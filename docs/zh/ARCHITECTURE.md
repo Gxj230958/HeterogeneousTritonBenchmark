@@ -1,13 +1,13 @@
-# TritonAscendBench — 架构
+# Heterogeneous Triton Benchmark — 架构
 
 > English: [../ARCHITECTURE.md](../ARCHITECTURE.md)
 
-TAB 是如何构建的，以及一次评测的流程：这是
+HTB 是如何构建的，以及一次评测的流程：这是
 [README](../../README.zh.md) 的"工作原理"配套文档。
 
-TAB 是一个 **迁移基准**。每个任务取一个真实的生产环境 GPU Triton
+HTB 是一个 **迁移基准**。每个任务取一个真实的生产环境 GPU Triton
 内核（来自 vLLM / SGLang / flash-linear-attention），并提出这样的问题：它能否
-在不损失正确性或性能的前提下，通过 `triton-ascend` 移植到华为 Ascend 910B NPU？该语料库共有
+在不损失正确性或性能的前提下，通过 `triton-ascend` 移植到 Ascend 910B NPU？该语料库共有
 **101 个任务** —— L1 有 36 个（单算子 / elementwise /
 reduce / quant），L2 有 35 个（融合 / matmul / MoE / 状态空间步进），L3 有 30 个
 （完整 Flash Attention / 融合 MoE / 分块流水线）。

@@ -2,7 +2,7 @@
 
 > English: [../../reference/correctness_model.md](../../reference/correctness_model.md)
 
-TritonAscendBench 如何判定一个算子的输出是**正确**的——即移植后的内核被据以打分的精度对齐标准，以及为每一档容差提供依据的误差模型。
+Heterogeneous Triton Benchmark 如何判定一个算子的输出是**正确**的——即移植后的内核被据以打分的精度对齐标准，以及为每一档容差提供依据的误差模型。
 
 本文是 [`tolerance_policy.md`](tolerance_policy.md)（按容差类整理的速查表）和 [`ARCHITECTURE.md`](../ARCHITECTURE.md)（端到端数据流）的机制配套说明。权威实现位于 `ascendbench/correctness/tolerance.py`；按容差类列出的具体数值则存放在 `ascendbench/policies/tolerance_policy.yaml`。
 
@@ -12,7 +12,7 @@ TritonAscendBench 如何判定一个算子的输出是**正确**的——即移�
 
 ## 1. 两个正确性层（最容易混淆之处）
 
-TAB 在**两个不同的维度**上、用**两套不同的标准**来判定正确性：
+HTB 在**两个不同的维度**上、用**两套不同的标准**来判定正确性：
 
 | 层 | 问题 | 标准 | 位置 |
 |-------|----------|----------|-------|

@@ -323,7 +323,7 @@ def _borrow_layernorm(tensors, attrs):
         return None
     ns = next((a.get("value") for a in attrs if a.get("name") == "normalized_shape"), None)
     if isinstance(ns, list) and len(ns) != 1:
-        return None  # multi-dim normalize -> does not map to TAB x=[B,D]
+        return None  # multi-dim normalize -> does not map to HTB x=[B,D]
     x = tensors[0]
     b_prod = 1
     for d in x[:-1]:

@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "triton-ascend-bench"
 version = "0.1.0"
-description = "Migration Benchmark for porting GPU Triton kernels to Huawei Ascend 910B via triton-ascend"
+description = "Migration Benchmark for porting GPU Triton kernels to Ascend 910B via triton-ascend"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 authors = [
-    { name = "TritonAscendBench Authors" },
+    { name = "Heterogeneous Triton Benchmark Authors" },
 ]
 keywords = ["benchmark", "triton", "ascend", "npu", "910b", "migration"]
 classifiers = [
@@ -50,7 +50,7 @@ dev = [
     "pre-commit",
 ]
 npu = [
-    # torch_npu (Ascend PyTorch adapter) — install via Huawei wheel
+    # torch_npu (Ascend PyTorch adapter) — install via the vendor wheel
     # triton-ascend — install via pip install triton-ascend
 ]
 gpu = [

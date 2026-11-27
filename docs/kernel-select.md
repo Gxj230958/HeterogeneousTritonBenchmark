@@ -1,4 +1,4 @@
-# Kernel 选型方案 — TritonAscendBench 题库
+# Kernel 选型方案 — Heterogeneous Triton Benchmark 题库
 
 ## 1. 概览
 

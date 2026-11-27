@@ -2,7 +2,7 @@
 
 > 中文版：[../zh/reference/correctness_model.md](../zh/reference/correctness_model.md)
 
-How TritonAscendBench decides an operator's output is **correct** — the
+How Heterogeneous Triton Benchmark decides an operator's output is **correct** — the
 precision-alignment standard a ported kernel is graded against, and the error
 models that justify each tolerance.
 
@@ -24,7 +24,7 @@ out as such.
 
 ## 1. Two correctness layers (the most-confused point)
 
-TAB judges correctness on **two distinct axes**, with **two distinct standards**:
+HTB judges correctness on **two distinct axes**, with **two distinct standards**:
 
 | Layer | Question | Standard | Where |
 |-------|----------|----------|-------|

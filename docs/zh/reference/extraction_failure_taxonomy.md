@@ -13,7 +13,7 @@
 | `cpp_stub_dep` | 调用自定义 C++ 扩展（例如 `torch.ops._C.*`） | 上游没有 `@triton.jit` → 无法构成有效任务；**在抽取阶段被排除**（区别于 `BLOCKED`，后者仍保留在 `\|S\|` 中）。PyTorch oracle **不是**独立的真值来源，无法替代 |
 | `dynamic_shape_branch` | 带有依赖 shape(形状) 分支的 `tl.where` | 创建多个 shape 配置，记录分支覆盖情况 |
 | `vendor_specific_op` | 调用 `torch_npu.*` / `sgl_kernel_npu.*` | 不是 Triton kernel — 从基准中排除 |
-| `private_no_source` | 没有 OSS 源码的 Bytedance / Huawei 内部 kernel | 移至 `_appendix/`，标注 `is_hidden_only: true` |
+| `private_no_source` | 没有 OSS 源码的 Bytedance 等厂商内部 kernel | 移至 `_appendix/`，标注 `is_hidden_only: true` |
 
 ## 解决工作流
 

@@ -1,21 +1,21 @@
-# TritonAscendBench — Design Rationale & Scoring Model
+# Heterogeneous Triton Benchmark — Design Rationale & Scoring Model
 
 > 中文版：[zh/DESIGN.md](zh/DESIGN.md)
 
-> What TAB measures, and why. For the machine-facing scoring detail see
+> What HTB measures, and why. For the machine-facing scoring detail see
 > [`docs/reference/scoring_spec.md`](reference/scoring_spec.md); this document
 > is the design rationale that spec implements.
 
-TritonAscendBench (TAB) is a **migration benchmark**. Each task gives you an
+Heterogeneous Triton Benchmark (HTB) is a **migration benchmark**. Each task gives you an
 existing production GPU Triton kernel taken from a real vLLM, SGLang, or
 flash-linear-attention inference path, and asks one question: *can this kernel be
-ported to the Huawei Ascend 910B NPU via `triton-ascend` without losing
+ported to the Ascend 910B NPU via `triton-ascend` without losing
 correctness or regressing performance?* The corpus is 101 tasks across three
 difficulty tiers (L1=36, L2=35, L3=30).
 
 ---
 
-## 1. What TAB is — the migration thesis
+## 1. What HTB is — the migration thesis
 
 Most kernel benchmarks test **generation**: given a PyTorch reference, can a
 model *write* a fast kernel from scratch?
@@ -23,7 +23,7 @@ model *write* a fast kernel from scratch?
 - [KernelBench](https://github.com/ScalingIntelligence/KernelBench) — PyTorch → CUDA generation.
 - [TritonBench](https://github.com/thunlp/TritonBench) — PyTorch → Triton generation.
 
-TAB tests **migration** instead. The starting point is not a blank file — it is
+HTB tests **migration** instead. The starting point is not a blank file — it is
 *real production GPU Triton code that already ships and already works*. vLLM and
 SGLang run today on H100/A100 with mature, tuned Triton kernels; the industrial
 question is whether those exact kernels can move to a different accelerator

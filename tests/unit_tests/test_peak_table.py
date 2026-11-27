@@ -162,17 +162,17 @@ def _write_peak_table(tmp_path, vector_provenance=None):
     """Minimal peak table; vector gets a provenance field only if given."""
     lines = [
         "[compute_class.fp16_cube]", "peak_tflops = 256.0",
-        'provenance = "huawei-official"',
+        'provenance = "ascend-official"',
         "[compute_class.bf16_cube]", "peak_tflops = 256.0",
         "[compute_class.int8]", "peak_tops = 512.0",
-        'provenance = "huawei-official"',
+        'provenance = "ascend-official"',
         "[compute_class.vector]", "peak_tflops = 20.0",
     ]
     if vector_provenance:
         lines.append(f'provenance = "{vector_provenance}"')
     lines += [
         "[resource.hbm]", "peak_bandwidth_gbps = 1600.0",
-        'provenance = "huawei-official"',
+        'provenance = "ascend-official"',
         "[resource.interconnect]", "peak_bandwidth_gbps = 0.0",
     ]
     p = tmp_path / "pk.toml"
@@ -192,7 +192,7 @@ def test_is_ranking_usable_positive_finite_only():
 def test_is_absolute_verified_requires_official_or_measured():
     # positive + official/measured -> absolute-verified.
     assert is_absolute_verified(67e12, "nvidia-official") is True
-    assert is_absolute_verified(256e12, "huawei-official") is True
+    assert is_absolute_verified(256e12, "ascend-official") is True
     assert is_absolute_verified(20e12, "on-device-measured") is True
     # positive but estimate/academic-spec -> ranking-only, NOT absolute.
     assert is_absolute_verified(20e12, "third-party-academic-spec") is False
@@ -204,15 +204,15 @@ def test_is_absolute_verified_requires_official_or_measured():
 
 def test_absolute_verified_set_is_official_plus_measured():
     assert ABSOLUTE_VERIFIED_PROVENANCES == frozenset(
-        {"nvidia-official", "huawei-official", "on-device-measured"})
+        {"nvidia-official", "ascend-official", "on-device-measured"})
 
 
 def test_load_peak_provenance_parses_field(tmp_path):
     p = _write_peak_table(tmp_path, vector_provenance="third-party-academic-spec")
     compute_prov, resource_prov = load_peak_provenance(p)
-    assert compute_prov["fp16_cube"] == "huawei-official"
+    assert compute_prov["fp16_cube"] == "ascend-official"
     assert compute_prov["vector"] == "third-party-academic-spec"
-    assert resource_prov["hbm"] == "huawei-official"
+    assert resource_prov["hbm"] == "ascend-official"
 
 
 def test_missing_provenance_defaults_unspecified(tmp_path):

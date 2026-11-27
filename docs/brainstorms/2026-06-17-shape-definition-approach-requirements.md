@@ -3,7 +3,7 @@ date: 2026-06-17
 topic: shape-definition-approach
 ---
 
-# How TAB should define operator shapes (vs industry prior art)
+# How HTB should define operator shapes (vs industry prior art)
 
 ## Problem Frame
 
@@ -24,7 +24,7 @@ a cosmetic one.
 | **KernelBench** (Stanford) | Python `get_inputs()`/`get_init_inputs()` returning **concrete tensors**; **one fixed shape per problem** | yes | no (one size/problem, by design) | no |
 | **TritonBench** (Meta) | `get_input_iter()` iterator; shape families + cross-tensor coupling done **in Python** (verified: flash_attention/decoding_attention operators) | yes | yes (seqlen sweeps, ragged) | imperative (Python), not declarative |
 | **SOL-ExecBench** (NVIDIA, 2026) | 235 problems = **subgraphs extracted from 124 real models**; graded vs analytic **Speed-of-Light roofline** bounds | yes (real provenance) | real workloads | SOL bound (roofline) |
-| **TAB (ours)** | generic **knob-grid** parameterisation | **no** (cryptic + template-bloated) | yes (single-axis ladder + grid) | **declarative** (`param_constraints` predicates + `cost_model` formulas) |
+| **HTB (ours)** | generic **knob-grid** parameterisation | **no** (cryptic + template-bloated) | yes (single-axis ladder + grid) | **declarative** (`param_constraints` predicates + `cost_model` formulas) |
 
 **Findings (corrected after codex supervision — earlier draft over-claimed in our favour):**
 1. The industry norm is **explicit, named, self-documenting** shapes. No established benchmark uses a
