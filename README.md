@@ -1,10 +1,8 @@
-# TritonAscendBench (TAB)
+# Heterogeneous Triton Benchmark (HTB)
 
-A **migration benchmark** that measures whether production GPU Triton kernels —
-extracted from vLLM and SGLang inference paths — can be ported to the Huawei
-Ascend 910B (Atlas A2) via `triton-ascend` **without losing correctness or
-performance**. Where generation benchmarks ask *"can a model write a kernel?"*,
-TAB asks *"can a real kernel survive a hardware migration?"*
+A benchmark suite designed to evaluate the portability of production-grade GPU Triton kernels — extracted from vLLM and SGLang inference pipelines — across heterogeneous AI accelerator architectures. It systematically verifies functional correctness and measures performance parity when migrating kernels to a Triton-compatible NPU compiler runtime.
+
+This benchmark covers 101 core AI operators organized into three difficulty tiers (single operator, fused operator, multi-stage pipeline operator), each paired with reference GPU Triton implementations and PyTorch golden outputs. It supports dozens of input size configurations split into seen and hidden subsets, enabling robust validation of compilation compatibility, numerical consistency, and end-to-end performance across compute platforms.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-blue)](pyproject.toml)
